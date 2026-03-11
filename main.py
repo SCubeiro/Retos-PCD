@@ -2,45 +2,33 @@ import sys
 
 
 def limpiar_valor(valor):
+    """Quita espacios y caracteres invalidos. Conserva digitos, punto y signo negativo."""
     valor = valor.strip()
-    caracteres_validos = "0123456789.-"
-    resultado = ""
-    for char in valor:
-        if char in caracteres_validos:
-            resultado += char
-    return resultado
+    return ''.join(c for c in valor if c in '0123456789.-')
 
 
-def convertir_a_entero(texto):
+def convertir(texto):
+    """Convierte texto a entero truncando decimales. Retorna 0 si no es valido."""
     if not texto:
         return 0
     try:
-        numero = float(texto)
-        return int(numero)
+        return int(float(texto))
     except ValueError:
         return 0
 
 
 def procesar_linea(linea):
+    """Procesa una linea: separa por comas, limpia, trunca y suma."""
     linea = linea.strip()
-
     if not linea:
         return 0
-
-    valores = linea.split(",")
-
-    total = 0
-    for valor in valores:
-        limpio = limpiar_valor(valor)
-        total += convertir_a_entero(limpio)
-
-    return total
+    valores = linea.split(',')
+    return sum(convertir(limpiar_valor(v)) for v in valores)
 
 
 def main():
     for linea in sys.stdin:
-        resultado = procesar_linea(linea)
-        print(resultado)
+        print(procesar_linea(linea))
 
 
 if __name__ == "__main__":
