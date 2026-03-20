@@ -1,0 +1,7 @@
+ciudad,temperatura,unidad
+Madrid,veintidos,C
+Paris,18,X
+Londres
+Berlin,15,C,extra
+Roma,abc,F
+

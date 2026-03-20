@@ -1,0 +1,12 @@
+ciudad,temperatura,unidad
+PolarCity,0,C
+ArcticBase,15,C
+CoastalTown,16,C
+SpringCity,25,C
+DesertEdge,26,C
+HotValley,35,C
+DeathValley,36,C
+NegCity,-0.5,C
+DecimalCity,22.5,c
+SpaceCity , 32 , f
+Tokio,-3.7,C
