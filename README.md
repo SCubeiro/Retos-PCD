@@ -1,65 +1,67 @@
-# Reto 02 — Clasificador de Temperaturas
+# Reto Semana 2 - Clasificador de Temperaturas
 
-Programa que lee reportes de temperatura de ciudades en formato CSV desde la entrada estándar, convierte todo a Celsius y clasifica cada ciudad según su temperatura.
+Programación para Ciencia de Datos | IPN 2026
 
-## Problema
+## Descripción
 
-Una agencia de viajes recibe temperaturas de ciudades del mundo mezclando Celsius y Fahrenheit. El programa normaliza las unidades y etiqueta cada ciudad con su clasificación climática.
+Programa que lee reportes de temperatura de ciudades en formato CSV desde la entrada estándar (stdin), convierte todo a Celsius y clasifica cada ciudad según su temperatura.
 
-## Uso
+Maneja correctamente:
+- Conversión de Fahrenheit a Celsius
+- Clasificación en 5 rangos: Congelante, Frio, Templado, Calido, Extremo
+- Unidades en mayúscula o minúscula (C, F, c, f)
+- Espacios extra alrededor de los campos
+- Líneas vacías o con datos inválidos (se ignoran)
+
+## Cómo ejecutar
 
 ```bash
-python3 main.py < tests/entrada1.txt
+# Desde un archivo
+python main.py < tests/entrada1.txt
+
+# Entrada manual (terminar con Ctrl+D en Mac/Linux)
+python main.py
 ```
 
-## Formato de entrada
+## Ejemplo
 
-CSV con encabezado `ciudad,temperatura,unidad`. La unidad puede ser `C` o `F` (también se acepta en minúscula). Se ignoran líneas con datos inválidos.
-
+**Entrada:**
 ```
 ciudad,temperatura,unidad
 CDMX,22,C
 Nueva York,50,F
+Moscu,-10,C
+Miami,95,F
 ```
 
-## Formato de salida
-
-CSV con encabezado `ciudad,temperatura_celsius,clasificacion`. La temperatura siempre se muestra con un decimal.
-
+**Salida:**
 ```
 ciudad,temperatura_celsius,clasificacion
 CDMX,22.0,Templado
 Nueva York,10.0,Frio
+Moscu,-10.0,Congelante
+Miami,35.0,Calido
 ```
 
 ## Clasificación
 
-| Rango (°C)   | Clasificación |
-|--------------|---------------|
-| < 0          | Congelante    |
-| 0 a 15       | Frio          |
-| 16 a 25      | Templado      |
-| 26 a 35      | Calido        |
-| > 35         | Extremo       |
-
-## Conversión
-
-`celsius = (fahrenheit - 32) × 5 / 9`
+| Rango (°C) | Clasificación |
+|------------|---------------|
+| < 0        | Congelante    |
+| 0 a 15     | Frio          |
+| 16 a 25    | Templado      |
+| 26 a 35    | Calido        |
+| > 35       | Extremo       |
 
 ## Pruebas
 
-| Archivo         | Descripción                                      |
-|-----------------|--------------------------------------------------|
-| entrada1.txt    | Ejemplo básico del reto (Celsius y Fahrenheit)   |
-| entrada2.txt    | Valores en los límites exactos, espacios, minúsculas |
-| entrada3.txt    | Líneas inválidas que deben ignorarse             |
-
-Para verificar contra la salida esperada:
-
 ```bash
-python3 main.py < tests/entrada1.txt | diff - tests/salida1.txt
-python3 main.py < tests/entrada2.txt | diff - tests/salida2.txt
-python3 main.py < tests/entrada3.txt | diff - tests/salida3.txt
+python main.py < tests/entrada1.txt | diff - tests/salida1.txt
+python main.py < tests/entrada2.txt | diff - tests/salida2.txt
+python main.py < tests/entrada3.txt | diff - tests/salida3.txt
 ```
 
-Si no imprime nada, el output es correcto.
+## Autor
+
+Santiago Alexey Corona Cubeiro
+Instituto Politécnico Nacional
