@@ -1,0 +1,2 @@
+producto,unidades_vendidas,ingreso_total,precio_promedio
+Laptop,3,44500.00,14833.33

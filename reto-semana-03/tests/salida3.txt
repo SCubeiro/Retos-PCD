@@ -1,0 +1,3 @@
+producto,unidades_vendidas,ingreso_total,precio_promedio
+Monitor,3,14600.00,4866.67
+Auriculares,15,4499.85,299.99

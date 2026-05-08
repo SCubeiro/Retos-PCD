@@ -1,0 +1,7 @@
+fecha,producto,cantidad,precio_unitario
+2026-02-01,Monitor,1,5000.00
+2026-02-02,Monitor,2,4800.00
+2026-02-03,Auriculares,10,299.99
+2026-02-04,Monitor,0,4900.00
+2026-02-05,Auriculares,5,299.99
+
