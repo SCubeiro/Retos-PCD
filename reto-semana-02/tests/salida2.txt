@@ -1,0 +1,12 @@
+ciudad,temperatura_celsius,clasificacion
+PolarCity,0.0,Frio
+ArcticBase,15.0,Frio
+CoastalTown,16.0,Templado
+SpringCity,25.0,Templado
+DesertEdge,26.0,Calido
+HotValley,35.0,Calido
+DeathValley,36.0,Extremo
+NegCity,-0.5,Congelante
+DecimalCity,22.5,Templado
+SpaceCity,0.0,Frio
+Tokio,-3.7,Congelante
