@@ -1,3 +1,4 @@
+import math
 import sys
 
 def parsear_linea(linea):
@@ -12,6 +13,11 @@ def parsear_linea(linea):
         cantidad = int(partes[2])
         precio = float(partes[3])
     except ValueError:
+        return None
+
+    # Rechazar valores no finitos: 'inf', '-inf', 'NaN', '1e999', etc.
+    # float() los acepta y contamina los acumulados con inf/nan.
+    if not math.isfinite(precio):
         return None
 
     return producto, cantidad, precio

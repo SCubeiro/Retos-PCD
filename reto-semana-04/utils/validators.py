@@ -1,5 +1,7 @@
 """Validaciones para los campos de un producto."""
 
+import math
+
 
 def validar_sku(sku):
     """SKU debe ser texto no vacio."""
@@ -9,11 +11,16 @@ def validar_sku(sku):
 
 
 def validar_precio(precio):
-    """Precio debe ser numerico y >= 0."""
+    """Precio debe ser numerico finito y >= 0.
+
+    float() acepta 'inf', '-inf', 'NaN', '1e999', etc. y devuelve inf/nan,
+    lo que contamina los calculos. Exigimos que el resultado sea finito.
+    """
     try:
-        return float(precio) >= 0
+        p = float(precio)
     except (ValueError, TypeError):
         return False
+    return math.isfinite(p) and p >= 0
 
 
 def validar_stock(stock):
