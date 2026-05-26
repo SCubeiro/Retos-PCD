@@ -22,14 +22,18 @@ def detectar_tipo(codigo):
 
 def validar_producto(codigo):
     """Valida que categoria y pais sean mayusculas (ABC-1234-MX)."""
-    # TODO
-    return False
+    # detectar_tipo ya acepto minusculas; aqui exijo mayusculas con ^...$.
+    return re.match(r'^[A-Z]{3}-\d{4}-[A-Z]{2}$', codigo) is not None
 
 
 def validar_envio(codigo):
     """Valida los rangos de fecha del envio (anio 2020-2030, mes 01-12, dia 01-31)."""
-    # TODO
-    return False
+    # El regex fija la forma; los rangos se revisan con int() para no inflar el patron.
+    m = re.match(r'^ENV-(\d{4})-(\d{2})-(\d{2})-(\d{6})$', codigo)
+    if not m:
+        return False
+    anio, mes, dia = int(m.group(1)), int(m.group(2)), int(m.group(3))
+    return 2020 <= anio <= 2030 and 1 <= mes <= 12 and 1 <= dia <= 31
 
 
 def validar_empleado(codigo):
