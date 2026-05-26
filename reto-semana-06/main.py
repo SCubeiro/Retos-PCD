@@ -7,7 +7,16 @@ SERIES_VALIDAS = ['A', 'B', 'C', 'D', 'E']
 
 def detectar_tipo(codigo):
     """Detecta el tipo de codigo por su estructura, no solo por el prefijo."""
-    # TODO: reconocer producto/envio/empleado/factura con regex anclados
+    # La estructura manda: TEC-001-MX (3 digitos) o EMP-VEN-123 (3 digitos) no
+    # matchean ningun patron y caen en 'desconocido', aunque tengan prefijo conocido.
+    if re.match(r'^[A-Za-z]{3}-\d{4}-[A-Za-z]{2}$', codigo):
+        return "producto"
+    if re.match(r'^ENV-\d{4}-\d{2}-\d{2}-\d{6}$', codigo):
+        return "envio"
+    if re.match(r'^EMP-[A-Za-z]{3}-\d{4}$', codigo):
+        return "empleado"
+    if re.match(r'^FAC-[A-Za-z]-\d{6}$', codigo):
+        return "factura"
     return "desconocido"
 
 
