@@ -38,14 +38,20 @@ def validar_envio(codigo):
 
 def validar_empleado(codigo):
     """Valida departamento permitido y numero que no empieza con 0."""
-    # TODO
-    return False
+    # [1-9]\d{3} fuerza que el primer digito sea 1-9 (no empieza con 0).
+    m = re.match(r'^EMP-([A-Z]{3})-[1-9]\d{3}$', codigo)
+    if not m:
+        return False
+    return m.group(1) in DEPARTAMENTOS_VALIDOS
 
 
 def validar_factura(codigo):
     """Valida que la serie sea A-E en mayuscula."""
-    # TODO
-    return False
+    # [A-Z] descarta la serie en minuscula (FAC-a-...); la lista descarta letras fuera de A-E.
+    m = re.match(r'^FAC-([A-Z])-\d{6}$', codigo)
+    if not m:
+        return False
+    return m.group(1) in SERIES_VALIDAS
 
 
 def validar_codigo(codigo):
